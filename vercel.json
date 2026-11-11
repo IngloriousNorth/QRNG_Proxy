@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/proxy",
-      "destination": "https://lfdr.de/qrng_api/qrng"
+      "destination": "https://lfdr.de/qrng_api/qrng?length=1"
     },
     {
       "source": "/api/proxy/:path*",
