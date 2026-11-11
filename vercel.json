@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/proxy",
-      "destination": "https://lfdr.de/qrng"
+      "destination": "https://lfdr.de/qrng_api/qrng"
     },
     {
       "source": "/api/proxy/:path*",
-      "destination": "https://lfdr.de/qrng/:path*"
+      "destination": "https://lfdr.de/qrng_api/qrng/:path*"
     }
   ]
 }
