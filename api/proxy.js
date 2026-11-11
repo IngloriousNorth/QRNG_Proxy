@@ -17,7 +17,7 @@ export default async function handler(req) {
 
   try {
     // Fetch data from your target provider (e.g., lfdr.de)
-    const targetUrl = `https://lfdr.de/?length=10`;
+    const targetUrl = `https://lfdr.de/api?length=${encodeURIComponent(length)}`;
     const response = await fetch(targetUrl);
     const data = await response.text();
 
