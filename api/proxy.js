@@ -18,7 +18,7 @@ export default async function handler(req) {
   try {
     // 1. Extract the query parameters from the incoming request URL
     const url = new URL(req.url);
-    const length = url.searchParams.get('length') || '10'; // defaults to 10 if not provided
+    const length = url.searchParams.get('length') || '1'; // defaults to 10 if not provided
 
     // 2. Build the target URL using the extracted length
     const targetUrl = `https://lfdr.de/api?length=${length}`;
