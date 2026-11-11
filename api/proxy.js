@@ -16,7 +16,11 @@ export default async function handler(req) {
   }
 
   try {
-    // Fetch data from your target provider (e.g., lfdr.de)
+    // 1. Extract the query parameters from the incoming request URL
+    const url = new URL(req.url);
+    const length = url.searchParams.get('length') || '10'; // defaults to 10 if not provided
+
+    // 2. Build the target URL using the extracted length
     const targetUrl = `https://lfdr.de/api?length=${length}`;
     const response = await fetch(targetUrl);
     const data = await response.text();
@@ -26,15 +30,15 @@ export default async function handler(req) {
       status: response.status,
       headers: {
         'Content-Type': response.headers.get('content-type') || 'text/plain',
-        'Access-Control-Allow-Origin': '*', // <-- This fixes the CORS error!
+        'Access-Control-Allow-Origin': '*',
       },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to fetch' }), {
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 
         'Content-Type': 'application/json', 
-        'Access-Control-Allow-Origin': '*' // <-- Also include on errors
+        'Access-Control-Allow-Origin': '*' 
       },
     });
   }
